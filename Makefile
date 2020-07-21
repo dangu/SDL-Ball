@@ -12,7 +12,7 @@ BINDIR=bin/
 STRIP=strip
 CXX?=g++
 
-CXXFLAGS+=-Wall `sdl-config --cflags` -DDATADIR="\"$(DATADIR)\""
+CXXFLAGS+=-g -Wall `sdl-config --cflags` -DDATADIR="\"$(DATADIR)\""
 
 #append -lwiiuse to compile with WIIUSE support
 #remove -lSDL_mixer if compiling with -DNOSOUND
@@ -27,7 +27,8 @@ all: $(SOURCES) $(EXECUTABLE)
 	
 $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
-	$(STRIP) $@
+#	$(STRIP) $@
+#	$@
 
 .cpp.o:
 	$(CXX) -c $(CXXFLAGS) $< -o $@
